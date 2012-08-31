@@ -1,13 +1,13 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://myapp.appspot.com/_ah/api",
+  "root" : "https://democloudpoint.appspot.com/_ah/api",
   "name" : "animalendpoint",
   "version" : "v1",
   "description" : "",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "http://myapp.appspot.com/_ah/spi",
+    "bns" : "http://democloudpoint.appspot.com/_ah/spi",
     "deadline" : 10.0,
     "type" : "lily"
   },

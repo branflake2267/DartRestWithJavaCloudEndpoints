@@ -1,13 +1,13 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://myapp.appspot.com/_ah/api",
+  "root" : "https://democloudpoint.appspot.com/_ah/api",
   "name" : "personendpoint",
   "version" : "v1",
   "description" : "",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "http://myapp.appspot.com/_ah/spi",
+    "bns" : "http://democloudpoint.appspot.com/_ah/spi",
     "deadline" : 10.0,
     "type" : "lily"
   },
@@ -25,20 +25,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "personendpoint.listPerson" : {
-      "path" : "person",
-      "httpMethod" : "GET",
-      "rosyMethod" : "PersonEndpoint.listPerson",
-      "request" : {
-        "parameters" : {
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "personendpoint.getPerson" : {
       "path" : "person/{id}",
       "httpMethod" : "GET",
@@ -49,6 +35,20 @@
             "required" : true,
             "type" : "string"
           }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.listPerson" : {
+      "path" : "person",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PersonEndpoint.listPerson",
+      "request" : {
+        "parameters" : {
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -140,15 +140,15 @@
       }
     },
     "methods" : {
+      "PersonEndpoint.getPerson" : {
+        "response" : {
+          "$ref" : "Person"
+        }
+      },
       "PersonEndpoint.listPerson" : {
         "response" : {
           "type" : "object",
           "$ref" : "Persons"
-        }
-      },
-      "PersonEndpoint.getPerson" : {
-        "response" : {
-          "$ref" : "Person"
         }
       },
       "PersonEndpoint.insertPerson" : {

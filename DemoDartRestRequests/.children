@@ -1,6 +1,5 @@
-tests/-TestSuite.dart
-rest/Request.dart
-tests/PersonTest.dart
+test/Tests.dart
+test/tests/PersonTest.dart
+test/tests/-TestSuite.dart
 data/Person.dart
-tests/RequestTest.dart
 DartCloudPoint.dart
