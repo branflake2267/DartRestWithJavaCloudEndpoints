@@ -25,6 +25,20 @@
     "maxAge" : 0
   },
   "methods" : {
+    "personendpoint.search" : {
+      "path" : "search",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.search",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "personendpoint.getPerson" : {
       "path" : "person/{id}",
       "httpMethod" : "GET",
@@ -43,12 +57,20 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "personendpoint.listPerson" : {
+    "personendpoint.person.list" : {
       "path" : "person",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.listPerson",
       "request" : {
         "parameters" : {
+          "cursor" : {
+            "required" : false,
+            "type" : "string"
+          },
+          "limit" : {
+            "required" : false,
+            "type" : "integer"
+          }
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -102,6 +124,20 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "personendpoint.addToSearchIndex" : {
+      "path" : "addToSearchIndex",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.addToSearchIndex",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
     }
   },
   "descriptor" : {
@@ -137,9 +173,33 @@
             }
           }
         }
+      },
+      "CollectionResponse_Person" : {
+        "id" : "CollectionResponse_Person",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Person"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
+      "PersonEndpoint.search" : {
+        "request" : {
+          "$ref" : "string"
+        },
+        "response" : {
+          "type" : "object",
+          "$ref" : "Persons"
+        }
+      },
       "PersonEndpoint.getPerson" : {
         "response" : {
           "$ref" : "Person"
@@ -147,8 +207,7 @@
       },
       "PersonEndpoint.listPerson" : {
         "response" : {
-          "type" : "object",
-          "$ref" : "Persons"
+          "$ref" : "CollectionResponse_Person"
         }
       },
       "PersonEndpoint.insertPerson" : {
@@ -170,6 +229,14 @@
       "PersonEndpoint.removePerson" : {
         "response" : {
           "$ref" : "Person"
+        }
+      },
+      "PersonEndpoint.addToSearchIndex" : {
+        "request" : {
+          "$ref" : "Person"
+        },
+        "response" : {
+          "$ref" : "empty"
         }
       }
     }

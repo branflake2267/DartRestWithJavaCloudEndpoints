@@ -25,12 +25,34 @@
     "maxAge" : 0
   },
   "methods" : {
-    "animalendpoint.listAnimal" : {
+    "animalendpoint.search" : {
+      "path" : "search",
+      "httpMethod" : "POST",
+      "rosyMethod" : "AnimalEndpoint.search",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "animalendpoint.animal.list" : {
       "path" : "animal",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.listAnimal",
       "request" : {
         "parameters" : {
+          "cursor" : {
+            "required" : false,
+            "type" : "string"
+          },
+          "limit" : {
+            "required" : false,
+            "type" : "integer"
+          }
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -102,6 +124,20 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "animalendpoint.addToSearchIndex" : {
+      "path" : "addToSearchIndex",
+      "httpMethod" : "POST",
+      "rosyMethod" : "AnimalEndpoint.addToSearchIndex",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
     }
   },
   "descriptor" : {
@@ -130,13 +166,36 @@
             }
           }
         }
+      },
+      "CollectionResponse_Animal" : {
+        "id" : "CollectionResponse_Animal",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Animal"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "AnimalEndpoint.listAnimal" : {
+      "AnimalEndpoint.search" : {
+        "request" : {
+          "$ref" : "string"
+        },
         "response" : {
           "type" : "object",
           "$ref" : "Animals"
+        }
+      },
+      "AnimalEndpoint.listAnimal" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Animal"
         }
       },
       "AnimalEndpoint.getAnimal" : {
@@ -163,6 +222,14 @@
       "AnimalEndpoint.removeAnimal" : {
         "response" : {
           "$ref" : "Animal"
+        }
+      },
+      "AnimalEndpoint.addToSearchIndex" : {
+        "request" : {
+          "$ref" : "Animal"
+        },
+        "response" : {
+          "$ref" : "empty"
         }
       }
     }

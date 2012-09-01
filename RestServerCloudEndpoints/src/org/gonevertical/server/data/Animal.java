@@ -41,5 +41,13 @@ public class Animal {
   public void setName(String name) {
     this.name = name;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("id=" + id + ",");
+    sb.append("nameFirst=" + name);
+    return sb.toString();
+  }
   
 }
