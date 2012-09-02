@@ -25,9 +25,9 @@
     "maxAge" : 0
   },
   "methods" : {
-    "animalendpoint.search" : {
-      "path" : "search",
-      "httpMethod" : "POST",
+    "animalendpoint.animal.search" : {
+      "path" : "animalendpoint/{queryString}",
+      "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.search",
       "request" : {
         "parameters" : {
@@ -37,6 +37,22 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+    },
+    "animalendpoint.addToSearchIndex" : {
+      "path" : "addToSearchIndex",
+      "httpMethod" : "POST",
+      "rosyMethod" : "AnimalEndpoint.addToSearchIndex",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
       }
     },
     "animalendpoint.animal.list" : {
@@ -59,10 +75,12 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "animalendpoint.getAnimal" : {
-      "path" : "animal/{id}",
+    "animalendpoint.animal.get" : {
+      "path" : "animalendpoint/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.getAnimal",
       "request" : {
@@ -77,10 +95,12 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "animalendpoint.insertAnimal" : {
-      "path" : "animal",
+    "animalendpoint.animal.insert" : {
+      "path" : "animalendpoint",
       "httpMethod" : "POST",
       "rosyMethod" : "AnimalEndpoint.insertAnimal",
       "request" : {
@@ -91,11 +111,13 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "animalendpoint.updateAnimal" : {
-      "path" : "animal",
-      "httpMethod" : "PUT",
+    "animalendpoint.animal.update" : {
+      "path" : "animalendpoint",
+      "httpMethod" : "POST",
       "rosyMethod" : "AnimalEndpoint.updateAnimal",
       "request" : {
         "parameters" : {
@@ -105,11 +127,13 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "animalendpoint.removeAnimal" : {
-      "path" : "animal/{id}",
-      "httpMethod" : "DELETE",
+    "animalendpoint.animal.remove" : {
+      "path" : "animalendpoint/{id}",
+      "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.removeAnimal",
       "request" : {
         "parameters" : {
@@ -123,21 +147,9 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "animalendpoint.addToSearchIndex" : {
-      "path" : "addToSearchIndex",
-      "httpMethod" : "POST",
-      "rosyMethod" : "AnimalEndpoint.addToSearchIndex",
-      "request" : {
-        "parameters" : {
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
-      "response" : {
-        "body" : "empty"
-      }
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     }
   },
   "descriptor" : {
@@ -193,6 +205,14 @@
           "$ref" : "Animals"
         }
       },
+      "AnimalEndpoint.addToSearchIndex" : {
+        "request" : {
+          "$ref" : "Animal"
+        },
+        "response" : {
+          "$ref" : "empty"
+        }
+      },
       "AnimalEndpoint.listAnimal" : {
         "response" : {
           "$ref" : "CollectionResponse_Animal"
@@ -222,14 +242,6 @@
       "AnimalEndpoint.removeAnimal" : {
         "response" : {
           "$ref" : "Animal"
-        }
-      },
-      "AnimalEndpoint.addToSearchIndex" : {
-        "request" : {
-          "$ref" : "Animal"
-        },
-        "response" : {
-          "$ref" : "empty"
         }
       }
     }

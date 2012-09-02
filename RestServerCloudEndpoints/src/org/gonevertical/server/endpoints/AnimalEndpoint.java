@@ -1,9 +1,18 @@
 package org.gonevertical.server.endpoints;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nullable;
+import javax.inject.Named;
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
 import org.datanucleus.store.appengine.query.JDOCursorHelper;
 import org.gonevertical.server.data.Animal;
 import org.gonevertical.server.data.PMF;
-import org.gonevertical.server.data.Person;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
@@ -17,16 +26,6 @@ import com.google.appengine.api.search.IndexSpec;
 import com.google.appengine.api.search.Results;
 import com.google.appengine.api.search.ScoredDocument;
 import com.google.appengine.api.search.SearchServiceFactory;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-import javax.inject.Named;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 
 @Api(name = "animalendpoint")
 public class AnimalEndpoint {
@@ -52,7 +51,12 @@ public class AnimalEndpoint {
     return PMF.get().getPersistenceManager();
   }
 
-  @ApiMethod(name = "animal.list", path = "animal")
+  @ApiMethod(
+      httpMethod = "GET",
+      name = "animal.list", 
+      path = "animal" ,
+      clientIds =   { "734175750239.apps.googleusercontent.com" } ,
+      scopes =   { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
   public CollectionResponse<Animal> listAnimal(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
@@ -83,7 +87,6 @@ public class AnimalEndpoint {
         cursorString = "";
       }
       
-      // Tight loop for fetching all entities from datastore and accomodate for lazy fetch.
       execute.size();
     } finally {
       pm.close();
@@ -92,6 +95,11 @@ public class AnimalEndpoint {
     return CollectionResponse.<Animal> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
+  @ApiMethod(httpMethod = "GET", 
+      name = "animal.get",
+      path = "animalendpoint/{id}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal getAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -103,6 +111,12 @@ public class AnimalEndpoint {
     return animal;
   }
 
+  @ApiMethod(
+      httpMethod = "POST",
+      name = "animal.insert",
+      path = "animalendpoint",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal insertAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -114,6 +128,12 @@ public class AnimalEndpoint {
     return animal;
   }
 
+  @ApiMethod(
+      httpMethod = "POST",
+      name = "animal.update",
+      path = "animalendpoint",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal updateAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -125,6 +145,12 @@ public class AnimalEndpoint {
     return animal;
   }
 
+  @ApiMethod(
+      httpMethod = "GET",
+      name = "animal.remove",
+      path = "animalendpoint/{id}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal removeAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -137,6 +163,12 @@ public class AnimalEndpoint {
     return animal;
   }
 
+  @ApiMethod(
+      httpMethod = "GET", 
+      name = "animal.search",
+      path = "animalendpoint/{queryString}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public List<Animal> search(String queryString) {
     List<Animal> returnList = new ArrayList<Animal>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);

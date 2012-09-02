@@ -25,9 +25,9 @@
     "maxAge" : 0
   },
   "methods" : {
-    "personendpoint.search" : {
-      "path" : "search",
-      "httpMethod" : "POST",
+    "personendpoint.person.search" : {
+      "path" : "personendpoint/{queryString}",
+      "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.search",
       "request" : {
         "parameters" : {
@@ -37,10 +37,12 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "personendpoint.getPerson" : {
-      "path" : "person/{id}",
+    "personendpoint.person.get" : {
+      "path" : "personendpoint/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.getPerson",
       "request" : {
@@ -55,10 +57,26 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+    },
+    "personendpoint.addToSearchIndex" : {
+      "path" : "addToSearchIndex",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.addToSearchIndex",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
       }
     },
     "personendpoint.person.list" : {
-      "path" : "person",
+      "path" : "personendpoint/{cursor}/{limit}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.listPerson",
       "request" : {
@@ -77,10 +95,12 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "personendpoint.insertPerson" : {
-      "path" : "person",
+    "personendpoint.person.insert" : {
+      "path" : "personendpoint",
       "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.insertPerson",
       "request" : {
@@ -91,11 +111,13 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "personendpoint.updatePerson" : {
-      "path" : "person",
-      "httpMethod" : "PUT",
+    "personendpoint.person.update" : {
+      "path" : "personendpoint",
+      "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.updatePerson",
       "request" : {
         "parameters" : {
@@ -105,11 +127,13 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
+      },
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
-    "personendpoint.removePerson" : {
-      "path" : "person/{id}",
-      "httpMethod" : "DELETE",
+    "personendpoint.person.remove" : {
+      "path" : "personendpoint/{id}",
+      "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.removePerson",
       "request" : {
         "parameters" : {
@@ -123,21 +147,9 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "personendpoint.addToSearchIndex" : {
-      "path" : "addToSearchIndex",
-      "httpMethod" : "POST",
-      "rosyMethod" : "PersonEndpoint.addToSearchIndex",
-      "request" : {
-        "parameters" : {
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
-      "response" : {
-        "body" : "empty"
-      }
+      "scopes" : [ "https://democloudpoint.appspot.com/auth/personendpoints" ],
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     }
   },
   "descriptor" : {
@@ -205,6 +217,14 @@
           "$ref" : "Person"
         }
       },
+      "PersonEndpoint.addToSearchIndex" : {
+        "request" : {
+          "$ref" : "Person"
+        },
+        "response" : {
+          "$ref" : "empty"
+        }
+      },
       "PersonEndpoint.listPerson" : {
         "response" : {
           "$ref" : "CollectionResponse_Person"
@@ -229,14 +249,6 @@
       "PersonEndpoint.removePerson" : {
         "response" : {
           "$ref" : "Person"
-        }
-      },
-      "PersonEndpoint.addToSearchIndex" : {
-        "request" : {
-          "$ref" : "Person"
-        },
-        "response" : {
-          "$ref" : "empty"
         }
       }
     }

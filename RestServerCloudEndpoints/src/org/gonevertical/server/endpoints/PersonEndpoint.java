@@ -48,30 +48,17 @@ public class PersonEndpoint {
     INDEX.add(doc);
   }
 
-  public List<Person> search(String queryString) {
-    List<Person> returnList = new ArrayList<Person>();
-    Results<ScoredDocument> searchResults = INDEX.search(queryString);
-
-    for (ScoredDocument scoredDoc : searchResults) {
-      Field fieldId = scoredDoc.getOnlyField("id");
-      if (fieldId == null || fieldId.getText() == null)
-        continue;
-
-      long personId = Long.parseLong(fieldId.getText());
-      if (personId != -1) {
-        Person p = getPerson(personId);
-        returnList.add(p);
-      }
-    }
-    return returnList;
-  }
-
   private static PersistenceManager getPersistenceManager() {
     return PMF.get().getPersistenceManager();
   }
 
+  @ApiMethod(
+      httpMethod = "GET",
+      name = "person.list", 
+      path = "personendpoint/{cursor}/{limit}", 
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
-  @ApiMethod(name = "person.list", path = "person")
   public CollectionResponse<Person> listPerson(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
     PersistenceManager pm = null;
@@ -100,8 +87,7 @@ public class PersonEndpoint {
       } else {
         cursorString = "";
       }
-      
-      // Tight loop for fetching all entities from datastore and accomodate for lazy fetch.
+
       execute.size();
     } finally {
       pm.close();
@@ -110,6 +96,11 @@ public class PersonEndpoint {
     return CollectionResponse.<Person> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
+  @ApiMethod(httpMethod = "GET", 
+      name = "person.get",
+      path = "personendpoint/{id}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person getPerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -121,26 +112,46 @@ public class PersonEndpoint {
     return person;
   }
 
+  @ApiMethod(
+      httpMethod = "POST",
+      name = "person.insert",
+      path = "personendpoint",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person insertPerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
       mgr.makePersistent(person);
+      addToSearchIndex(person);
     } finally {
       mgr.close();
     }
     return person;
   }
 
+  @ApiMethod(
+      httpMethod = "POST",
+      name = "person.update",
+      path = "personendpoint",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person updatePerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
       mgr.makePersistent(person);
+      addToSearchIndex(person);
     } finally {
       mgr.close();
     }
     return person;
   }
 
+  @ApiMethod(
+      httpMethod = "GET",
+      name = "person.remove",
+      path = "personendpoint/{id}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person removePerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -153,4 +164,28 @@ public class PersonEndpoint {
     return person;
   }
 
+  @ApiMethod(
+      httpMethod = "GET", 
+      name = "person.search",
+      path = "personendpoint/{queryString}",
+      clientIds = { "734175750239.apps.googleusercontent.com" }, 
+      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+  public List<Person> search(String queryString) {
+    List<Person> returnList = new ArrayList<Person>();
+    Results<ScoredDocument> searchResults = INDEX.search(queryString);
+
+    for (ScoredDocument scoredDoc : searchResults) {
+      Field fieldId = scoredDoc.getOnlyField("id");
+      if (fieldId == null || fieldId.getText() == null)
+        continue;
+
+      long personId = Long.parseLong(fieldId.getText());
+      if (personId != -1) {
+        Person p = getPerson(personId);
+        returnList.add(p);
+      }
+    }
+    return returnList;
+  }
+  
 }

@@ -46,7 +46,7 @@ public class Animal {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("id=" + id + ",");
-    sb.append("nameFirst=" + name);
+    sb.append("name=" + name);
     return sb.toString();
   }
   

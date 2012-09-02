@@ -6,10 +6,11 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * insert curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon"
- * }' http://localhost:8888/_ah/api/personendpoint/v1/person
+ * insert 
+ * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon" }' http://localhost:8888/_ah/api/personendpoint/v1/person
  * 
- * list curl http://localhost:8888/_ah/api/personendpoint/v1/person
+ * list 
+ * curl http://localhost:8888/_ah/api/personendpoint/v1/person
  */
 @PersistenceCapable
 public class Person {
@@ -55,7 +56,7 @@ public class Person {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("id=" + id + ",");
-    sb.append("nameFirst=" + nameFirst);
+    sb.append("nameFirst=" + nameFirst + ",");
     sb.append("nameLast=" + nameLast);
     return sb.toString();
   }
