@@ -149,7 +149,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.remove",
-      path = "person/{id}",
+      path = "person/remove/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person removePerson(@Named("id") Long id) {
@@ -158,6 +158,7 @@ public class PersonEndpoint {
     try {
       person = mgr.getObjectById(Person.class, id);
       mgr.deletePersistent(person);
+      INDEX.remove(person.getId().toString());
     } finally {
       mgr.close();
     }
@@ -167,7 +168,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET", 
       name = "person.search",
-      path = "person/{queryString}",
+      path = "person/search/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public List<Person> search(String queryString) {

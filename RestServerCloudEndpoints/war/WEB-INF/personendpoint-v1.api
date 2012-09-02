@@ -26,7 +26,7 @@
   },
   "methods" : {
     "personendpoint.person.search" : {
-      "path" : "person/{queryString}",
+      "path" : "person/search/{queryString}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.search",
       "request" : {
@@ -132,7 +132,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.remove" : {
-      "path" : "person/{id}",
+      "path" : "person/remove/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.removePerson",
       "request" : {
