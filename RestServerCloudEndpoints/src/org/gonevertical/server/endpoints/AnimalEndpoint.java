@@ -97,7 +97,7 @@ public class AnimalEndpoint {
 
   @ApiMethod(httpMethod = "GET", 
       name = "animal.get",
-      path = "animalendpoint/{id}",
+      path = "animal/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal getAnimal(@Named("id") Long id) {
@@ -114,7 +114,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "animal.insert",
-      path = "animalendpoint",
+      path = "animal",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal insertAnimal(Animal animal) {
@@ -131,7 +131,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "animal.update",
-      path = "animalendpoint",
+      path = "animal",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal updateAnimal(Animal animal) {
@@ -148,7 +148,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "animal.remove",
-      path = "animalendpoint/{id}",
+      path = "animal/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public Animal removeAnimal(@Named("id") Long id) {
@@ -166,7 +166,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "GET", 
       name = "animal.search",
-      path = "animalendpoint/{queryString}",
+      path = "animal/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
   public List<Animal> search(String queryString) {

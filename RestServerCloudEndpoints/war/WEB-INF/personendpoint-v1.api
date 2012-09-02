@@ -26,7 +26,7 @@
   },
   "methods" : {
     "personendpoint.person.search" : {
-      "path" : "personendpoint/{queryString}",
+      "path" : "person/{queryString}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.search",
       "request" : {
@@ -42,7 +42,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.get" : {
-      "path" : "personendpoint/{id}",
+      "path" : "person/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.getPerson",
       "request" : {
@@ -76,7 +76,7 @@
       }
     },
     "personendpoint.person.list" : {
-      "path" : "personendpoint/{cursor}/{limit}",
+      "path" : "person",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.listPerson",
       "request" : {
@@ -100,7 +100,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.insert" : {
-      "path" : "personendpoint",
+      "path" : "person",
       "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.insertPerson",
       "request" : {
@@ -116,7 +116,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.update" : {
-      "path" : "personendpoint",
+      "path" : "person",
       "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.updatePerson",
       "request" : {
@@ -132,7 +132,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.remove" : {
-      "path" : "personendpoint/{id}",
+      "path" : "person/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.removePerson",
       "request" : {

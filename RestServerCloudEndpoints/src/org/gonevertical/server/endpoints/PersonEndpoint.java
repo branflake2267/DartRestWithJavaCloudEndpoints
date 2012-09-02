@@ -55,7 +55,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.list", 
-      path = "personendpoint/{cursor}/{limit}", 
+      path = "person", 
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
@@ -98,7 +98,7 @@ public class PersonEndpoint {
 
   @ApiMethod(httpMethod = "GET", 
       name = "person.get",
-      path = "personendpoint/{id}",
+      path = "person/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person getPerson(@Named("id") Long id) {
@@ -115,7 +115,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.insert",
-      path = "personendpoint",
+      path = "person",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person insertPerson(Person person) {
@@ -132,7 +132,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.update",
-      path = "personendpoint",
+      path = "person",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person updatePerson(Person person) {
@@ -149,7 +149,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.remove",
-      path = "personendpoint/{id}",
+      path = "person/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person removePerson(@Named("id") Long id) {
@@ -167,7 +167,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET", 
       name = "person.search",
-      path = "personendpoint/{queryString}",
+      path = "person/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public List<Person> search(String queryString) {
