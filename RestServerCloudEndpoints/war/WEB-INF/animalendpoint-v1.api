@@ -26,7 +26,7 @@
   },
   "methods" : {
     "animalendpoint.animal.search" : {
-      "path" : "animal/{queryString}",
+      "path" : "animal/search/{queryString}",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.search",
       "request" : {
@@ -56,7 +56,7 @@
       }
     },
     "animalendpoint.animal.list" : {
-      "path" : "animal",
+      "path" : "animal/list",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.listAnimal",
       "request" : {
@@ -80,7 +80,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.get" : {
-      "path" : "animal/{id}",
+      "path" : "animal/get/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.getAnimal",
       "request" : {
@@ -100,7 +100,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.insert" : {
-      "path" : "animal",
+      "path" : "animal/insert",
       "httpMethod" : "POST",
       "rosyMethod" : "AnimalEndpoint.insertAnimal",
       "request" : {
@@ -116,7 +116,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.update" : {
-      "path" : "animal",
+      "path" : "animal/update",
       "httpMethod" : "POST",
       "rosyMethod" : "AnimalEndpoint.updateAnimal",
       "request" : {
@@ -132,7 +132,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.remove" : {
-      "path" : "animal/{id}",
+      "path" : "animal/remove/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "AnimalEndpoint.removeAnimal",
       "request" : {
