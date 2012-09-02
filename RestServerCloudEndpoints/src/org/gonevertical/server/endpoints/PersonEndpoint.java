@@ -55,7 +55,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.list", 
-      path = "person", 
+      path = "person/list", 
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
@@ -98,7 +98,7 @@ public class PersonEndpoint {
 
   @ApiMethod(httpMethod = "GET", 
       name = "person.get",
-      path = "person/{id}",
+      path = "person/get/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person getPerson(@Named("id") Long id) {
@@ -115,7 +115,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.insert",
-      path = "person",
+      path = "person/insert",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person insertPerson(Person person) {
@@ -132,7 +132,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.update",
-      path = "person",
+      path = "person/update",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
   public Person updatePerson(Person person) {

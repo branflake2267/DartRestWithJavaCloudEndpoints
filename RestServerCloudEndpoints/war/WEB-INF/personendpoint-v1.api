@@ -42,7 +42,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.get" : {
-      "path" : "person/{id}",
+      "path" : "person/get/{id}",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.getPerson",
       "request" : {
@@ -76,7 +76,7 @@
       }
     },
     "personendpoint.person.list" : {
-      "path" : "person",
+      "path" : "person/list",
       "httpMethod" : "GET",
       "rosyMethod" : "PersonEndpoint.listPerson",
       "request" : {
@@ -100,7 +100,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.insert" : {
-      "path" : "person",
+      "path" : "person/insert",
       "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.insertPerson",
       "request" : {
@@ -116,7 +116,7 @@
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.update" : {
-      "path" : "person",
+      "path" : "person/update",
       "httpMethod" : "POST",
       "rosyMethod" : "PersonEndpoint.updatePerson",
       "request" : {
