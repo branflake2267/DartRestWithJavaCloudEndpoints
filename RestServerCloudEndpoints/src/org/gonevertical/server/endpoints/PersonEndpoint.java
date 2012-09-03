@@ -115,9 +115,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.insert",
-      path = "person/insert",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/insert")
   public Person insertPerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
