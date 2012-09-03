@@ -130,9 +130,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "person.update",
-      path = "person/update",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/update")
   public Person updatePerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
