@@ -1,0 +1,245 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://democloudpoint.appspot.com/_ah/api",
+  "name" : "personendpoint",
+  "version" : "v1",
+  "description" : "This entity represents a person.",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "http://democloudpoint.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "personendpoint.person.search" : {
+      "path" : "person/search/{queryString}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PersonEndpoint.search",
+      "request" : {
+        "parameters" : {
+          "queryString" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.person.get" : {
+      "path" : "person/get/{id}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PersonEndpoint.getPerson",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.addToSearchIndex" : {
+      "path" : "addToSearchIndex",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.addToSearchIndex",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "personendpoint.person.list" : {
+      "path" : "person/list",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PersonEndpoint.listPerson",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "required" : false,
+            "type" : "string"
+          },
+          "limit" : {
+            "required" : false,
+            "type" : "integer"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.person.insert" : {
+      "path" : "person/insert",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.insertPerson",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.person.update" : {
+      "path" : "person/update",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PersonEndpoint.updatePerson",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "personendpoint.person.remove" : {
+      "path" : "person/remove/{id}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PersonEndpoint.removePerson",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Person" : {
+        "id" : "Person",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "longId" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "nameFirst" : {
+            "type" : "string"
+          },
+          "nameLast" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Persons" : {
+        "id" : "Persons",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Person"
+            }
+          }
+        }
+      },
+      "CollectionResponse_Person" : {
+        "id" : "CollectionResponse_Person",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Person"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "PersonEndpoint.search" : {
+        "response" : {
+          "type" : "object",
+          "$ref" : "Persons"
+        }
+      },
+      "PersonEndpoint.getPerson" : {
+        "response" : {
+          "$ref" : "Person"
+        }
+      },
+      "PersonEndpoint.addToSearchIndex" : {
+        "request" : {
+          "$ref" : "Person"
+        },
+        "response" : {
+          "$ref" : "empty"
+        }
+      },
+      "PersonEndpoint.listPerson" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Person"
+        }
+      },
+      "PersonEndpoint.insertPerson" : {
+        "request" : {
+          "$ref" : "Person"
+        },
+        "response" : {
+          "$ref" : "Person"
+        }
+      },
+      "PersonEndpoint.updatePerson" : {
+        "request" : {
+          "$ref" : "Person"
+        },
+        "response" : {
+          "$ref" : "Person"
+        }
+      },
+      "PersonEndpoint.removePerson" : {
+        "response" : {
+          "$ref" : "Person"
+        }
+      }
+    }
+  }
+}
