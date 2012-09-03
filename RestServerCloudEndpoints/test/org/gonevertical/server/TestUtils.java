@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.sun.net.ssl.HttpsURLConnection;
+
 public class TestUtils {
   
   private String charset = "UTF-8";
@@ -17,6 +19,9 @@ public class TestUtils {
     try {
       URL urlo = new URL(url);
       URLConnection conn = urlo.openConnection();
+      conn.setDoInput(true); 
+      conn.setDoOutput(true);
+      
       InputStream in = conn.getInputStream();
       int ch;
       while (((ch = in.read()) != -1)) {

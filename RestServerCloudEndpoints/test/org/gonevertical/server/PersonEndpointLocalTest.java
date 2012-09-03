@@ -8,11 +8,11 @@ import org.junit.Test;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-public class PersonEndpointTest extends TestUtils {
+public class PersonEndpointLocalTest extends TestUtils {
 
   @Test
   public void testList() {
-    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/list");
+    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/list?limit=2");
     assertTrue(content.contains("\"items\" :"));
   }
     
@@ -71,12 +71,35 @@ public class PersonEndpointTest extends TestUtils {
   
   @Test
   public void testSearch() {
-    
+    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/search/brandon");
+    assertTrue(content.contains("\"items\" :"));
   }
   
   @Test
   public void testRemove() {
+    String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/insert";
+    String json = "{ \"nameFirst\": \"Brandon\" }";
+    String content = postRequest(url, json);
     
+    JSONObject jso = null;
+    try {
+      jso = new JSONObject(content);
+    } catch (JSONException e) {
+      e.printStackTrace();
+      fail();
+    }
+    
+    long id = 0;
+    try {
+      id = jso.getLong("id");
+    } catch (JSONException e) {
+      e.printStackTrace();
+      fail();
+    }
+    
+    url = "http://localhost:8888/_ah/api/personendpoint/v1/person/remove/" + id;
+    content = getRequest(url);
+    assertTrue(content.contains("\"id\" : " + id));
   }
   
 }

@@ -7,10 +7,10 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * insert 
- * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon" }' http://localhost:8888/_ah/api/personendpoint/v1/person
+ * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon" }' http://localhost:8888/_ah/api/personendpoint/v1/person/insert
  * 
  * list 
- * curl http://localhost:8888/_ah/api/personendpoint/v1/person
+ * curl http://localhost:8888/_ah/api/personendpoint/v1/person/list
  */
 @PersistenceCapable
 public class Person {

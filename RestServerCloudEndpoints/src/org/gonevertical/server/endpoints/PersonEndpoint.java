@@ -171,7 +171,7 @@ public class PersonEndpoint {
       path = "person/search/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
       scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
-  public List<Person> search(String queryString) {
+  public List<Person> search(@Named("queryString") String queryString) {
     List<Person> returnList = new ArrayList<Person>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);
 

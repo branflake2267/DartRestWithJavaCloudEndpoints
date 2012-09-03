@@ -31,6 +31,10 @@
       "rosyMethod" : "PersonEndpoint.search",
       "request" : {
         "parameters" : {
+          "queryString" : {
+            "required" : true,
+            "type" : "string"
+          }
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -204,9 +208,6 @@
     },
     "methods" : {
       "PersonEndpoint.search" : {
-        "request" : {
-          "$ref" : "string"
-        },
         "response" : {
           "type" : "object",
           "$ref" : "Persons"
