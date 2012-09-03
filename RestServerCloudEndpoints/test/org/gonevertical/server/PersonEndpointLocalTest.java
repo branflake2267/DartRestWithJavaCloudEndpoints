@@ -11,22 +11,22 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class PersonEndpointLocalTest extends TestUtils {
 
   /**
-   * curl http://localhost:8888/_ah/api/personendpoint/v1/person/list
-   * curl https://democloudpoint.appspot.com/_ah/api/personendpoint/v1/person/list
+   * curl http://localhost:8888/_ah/api/personendpoint/v2/person/list
+   * curl https://democloudpoint.appspot.com/_ah/api/personendpoint/v2/person/list
    */
   @Test
   public void testList() {
-    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/list?limit=2");
+    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v2/person/list?limit=2");
     assertTrue(content.contains("\"items\" :"));
   }
     
   /**
-   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' http://localhost:8888/_ah/api/personendpoint/v1/person/insert
-   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' https://democloudpoint.appspot.com/_ah/api/personendpoint/v1/person/insert
+   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' http://localhost:8888/_ah/api/personendpoint/v2/person/insert
+   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' https://democloudpoint.appspot.com/_ah/api/personendpoint/v2/person/insert
    */
   @Test
   public void testInsert() {
-    String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/insert";
+    String url = "http://localhost:8888/_ah/api/personendpoint/v2/person/insert";
     String json = "{ \"nameFirst\": \"Brandon\", \"nameLast\": \"Donnelson\" }";
     String content = postRequest(url, json);
     assertTrue(content.contains("\"id\" :"));
@@ -34,14 +34,14 @@ public class PersonEndpointLocalTest extends TestUtils {
   
   @Test
   public void testGet() {
-    String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/get/1";
+    String url = "http://localhost:8888/_ah/api/personendpoint/v2/person/get/1";
     String content = getRequest(url);
     assertTrue(content.contains("\"id\" :"));
   }
   
   @Test
   public void testUpdate() {
-    String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/insert";
+    String url = "http://localhost:8888/_ah/api/personendpoint/v2/person/insert";
     String json = "{ \"nameFirst\": \"Brandon\" }";
     String content = postRequest(url, json);
     
@@ -53,7 +53,7 @@ public class PersonEndpointLocalTest extends TestUtils {
       fail();
     }
     
-    url = "http://localhost:8888/_ah/api/personendpoint/v1/person/update";
+    url = "http://localhost:8888/_ah/api/personendpoint/v2/person/update";
     try {
       jso.put("nameLast", "Donnelson");
     } catch (JSONException e1) {
@@ -79,13 +79,13 @@ public class PersonEndpointLocalTest extends TestUtils {
   
   @Test
   public void testSearch() {
-    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/search/brandon");
+    String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v2/person/search/brandon");
     assertTrue(content.contains("\"items\" :"));
   }
   
   @Test
   public void testRemove() {
-    String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/insert";
+    String url = "http://localhost:8888/_ah/api/personendpoint/v2/person/insert";
     String json = "{ \"nameFirst\": \"Brandon\" }";
     String content = postRequest(url, json);
     
@@ -105,7 +105,7 @@ public class PersonEndpointLocalTest extends TestUtils {
       fail();
     }
     
-    url = "http://localhost:8888/_ah/api/personendpoint/v1/person/remove/" + id;
+    url = "http://localhost:8888/_ah/api/personendpoint/v2/person/remove/" + id;
     content = getRequest(url);
     assertTrue(content.contains("\"id\" : " + id));
   }
