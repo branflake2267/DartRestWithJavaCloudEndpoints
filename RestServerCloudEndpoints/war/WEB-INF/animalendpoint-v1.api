@@ -37,9 +37,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     },
     "animalendpoint.addToSearchIndex" : {
       "path" : "addToSearchIndex",
@@ -75,9 +73,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     },
     "animalendpoint.animal.get" : {
       "path" : "animal/get/{id}",
@@ -95,9 +91,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     },
     "animalendpoint.animal.insert" : {
       "path" : "animal/insert",
@@ -111,9 +105,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     },
     "animalendpoint.animal.update" : {
       "path" : "animal/update",
@@ -127,9 +119,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     },
     "animalendpoint.animal.remove" : {
       "path" : "animal/remove/{id}",
@@ -147,9 +137,7 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      },
-      "scopes" : [ "animalendpoints" ],
-      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
+      }
     }
   },
   "descriptor" : {

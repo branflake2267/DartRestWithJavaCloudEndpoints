@@ -54,9 +54,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "animal.list", 
-      path = "animal/list" ,
-      clientIds = { "734175750239.apps.googleusercontent.com" } ,
-      scopes = { "animalendpoints" })
+      path = "animal/list")
   @SuppressWarnings({ "cast", "unchecked" })
   public CollectionResponse<Animal> listAnimal(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
@@ -95,11 +93,10 @@ public class AnimalEndpoint {
     return CollectionResponse.<Animal> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
-  @ApiMethod(httpMethod = "GET", 
+  @ApiMethod(
+      httpMethod = "GET", 
       name = "animal.get",
-      path = "animal/get/{id}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "animalendpoints" })
+      path = "animal/get/{id}")
   public Animal getAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -114,9 +111,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "animal.insert",
-      path = "animal/insert",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "animalendpoints" })
+      path = "animal/insert")
   public Animal insertAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -131,9 +126,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "POST",
       name = "animal.update",
-      path = "animal/update",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "animalendpoints" })
+      path = "animal/update")
   public Animal updateAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -148,9 +141,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "animal.remove",
-      path = "animal/remove/{id}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "animalendpoints" })
+      path = "animal/remove/{id}")
   public Animal removeAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -166,9 +157,7 @@ public class AnimalEndpoint {
   @ApiMethod(
       httpMethod = "GET", 
       name = "animal.search",
-      path = "animal/search/{queryString}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "animalendpoints" })
+      path = "animal/search/{queryString}")
   public List<Animal> search(String queryString) {
     List<Animal> returnList = new ArrayList<Animal>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);

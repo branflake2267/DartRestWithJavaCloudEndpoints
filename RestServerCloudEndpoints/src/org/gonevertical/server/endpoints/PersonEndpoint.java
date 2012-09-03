@@ -29,9 +29,8 @@ import javax.jdo.Query;
 
 @Api(
      name = "personendpoint",
-     description = "This entity represents a person.",
-     clientIds = { "734175750239.apps.googleusercontent.com" }, 
-     version = "v2")
+     description = "This entity represents a person.", 
+     version = "v1")
 public class PersonEndpoint {
 
   private static final Index INDEX = getIndex();
@@ -59,9 +58,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.list", 
-      path = "person/list", 
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/list")
   @SuppressWarnings({ "cast", "unchecked" })
   public CollectionResponse<Person> listPerson(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
@@ -100,11 +97,10 @@ public class PersonEndpoint {
     return CollectionResponse.<Person> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
-  @ApiMethod(httpMethod = "GET", 
+  @ApiMethod(
+      httpMethod = "GET", 
       name = "person.get",
-      path = "person/get/{id}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/get/{id}")
   public Person getPerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -153,9 +149,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET",
       name = "person.remove",
-      path = "person/remove/{id}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/remove/{id}")
   public Person removePerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -172,9 +166,7 @@ public class PersonEndpoint {
   @ApiMethod(
       httpMethod = "GET", 
       name = "person.search",
-      path = "person/search/{queryString}",
-      clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "personendpoints" })
+      path = "person/search/{queryString}")
   public List<Person> search(@Named("queryString") String queryString) {
     List<Person> returnList = new ArrayList<Person>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);
