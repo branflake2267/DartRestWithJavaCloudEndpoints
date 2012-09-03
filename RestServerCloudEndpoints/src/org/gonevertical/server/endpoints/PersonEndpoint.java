@@ -61,7 +61,7 @@ public class PersonEndpoint {
       name = "person.list", 
       path = "person/list", 
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
   public CollectionResponse<Person> listPerson(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
@@ -104,7 +104,7 @@ public class PersonEndpoint {
       name = "person.get",
       path = "person/get/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   public Person getPerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -121,7 +121,7 @@ public class PersonEndpoint {
       name = "person.insert",
       path = "person/insert",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   public Person insertPerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -138,7 +138,7 @@ public class PersonEndpoint {
       name = "person.update",
       path = "person/update",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   public Person updatePerson(Person person) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -155,7 +155,7 @@ public class PersonEndpoint {
       name = "person.remove",
       path = "person/remove/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   public Person removePerson(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Person person = null;
@@ -174,7 +174,7 @@ public class PersonEndpoint {
       name = "person.search",
       path = "person/search/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/personendpoints" })
+      scopes = { "personendpoints" })
   public List<Person> search(@Named("queryString") String queryString) {
     List<Person> returnList = new ArrayList<Person>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);

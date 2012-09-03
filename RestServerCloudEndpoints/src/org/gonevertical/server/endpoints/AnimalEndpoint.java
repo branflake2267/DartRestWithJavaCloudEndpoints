@@ -56,7 +56,7 @@ public class AnimalEndpoint {
       name = "animal.list", 
       path = "animal/list" ,
       clientIds = { "734175750239.apps.googleusercontent.com" } ,
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   @SuppressWarnings({ "cast", "unchecked" })
   public CollectionResponse<Animal> listAnimal(@Nullable @Named("cursor") String cursorString,
       @Nullable @Named("limit") Integer limit) {
@@ -99,7 +99,7 @@ public class AnimalEndpoint {
       name = "animal.get",
       path = "animal/get/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   public Animal getAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -116,7 +116,7 @@ public class AnimalEndpoint {
       name = "animal.insert",
       path = "animal/insert",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   public Animal insertAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -133,7 +133,7 @@ public class AnimalEndpoint {
       name = "animal.update",
       path = "animal/update",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   public Animal updateAnimal(Animal animal) {
     PersistenceManager mgr = getPersistenceManager();
     try {
@@ -150,7 +150,7 @@ public class AnimalEndpoint {
       name = "animal.remove",
       path = "animal/remove/{id}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   public Animal removeAnimal(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     Animal animal = null;
@@ -168,7 +168,7 @@ public class AnimalEndpoint {
       name = "animal.search",
       path = "animal/search/{queryString}",
       clientIds = { "734175750239.apps.googleusercontent.com" }, 
-      scopes = { "https://democloudpoint.appspot.com/auth/animalendpoints" })
+      scopes = { "animalendpoints" })
   public List<Animal> search(String queryString) {
     List<Animal> returnList = new ArrayList<Animal>();
     Results<ScoredDocument> searchResults = INDEX.search(queryString);

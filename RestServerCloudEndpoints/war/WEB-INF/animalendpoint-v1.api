@@ -38,7 +38,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.addToSearchIndex" : {
@@ -76,7 +76,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.get" : {
@@ -96,7 +96,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.insert" : {
@@ -112,7 +112,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.update" : {
@@ -128,7 +128,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "animalendpoint.animal.remove" : {
@@ -148,7 +148,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       },
-      "scopes" : [ "https://democloudpoint.appspot.com/auth/animalendpoints" ],
+      "scopes" : [ "animalendpoints" ],
       "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     }
   },
