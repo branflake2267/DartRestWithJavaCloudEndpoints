@@ -10,12 +10,20 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class PersonEndpointLocalTest extends TestUtils {
 
+  /**
+   * curl http://localhost:8888/_ah/api/personendpoint/v1/person/list
+   * curl https://democloudpoint.appspot.com/_ah/api/personendpoint/v1/person/list
+   */
   @Test
   public void testList() {
     String content = getRequest("http://localhost:8888/_ah/api/personendpoint/v1/person/list?limit=2");
     assertTrue(content.contains("\"items\" :"));
   }
     
+  /**
+   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' http://localhost:8888/_ah/api/personendpoint/v1/person/insert
+   * curl -H 'Content-Type: application/json' -d '{ "nameFirst": "Brandon", "nameLast": "Donnelson" }' https://democloudpoint.appspot.com/_ah/api/personendpoint/v1/person/insert
+   */
   @Test
   public void testInsert() {
     String url = "http://localhost:8888/_ah/api/personendpoint/v1/person/insert";

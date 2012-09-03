@@ -27,7 +27,11 @@ import javax.inject.Named;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "personendpoint")
+@Api(
+     name = "personendpoint",
+     description = "This entity represents a person.",
+     clientIds = { "734175750239.apps.googleusercontent.com" }, 
+     version = "v2")
 public class PersonEndpoint {
 
   private static final Index INDEX = getIndex();

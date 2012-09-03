@@ -3,8 +3,8 @@
   "abstract" : false,
   "root" : "https://democloudpoint.appspot.com/_ah/api",
   "name" : "personendpoint",
-  "version" : "v1",
-  "description" : "",
+  "version" : "v2",
+  "description" : "This entity represents a person.",
   "defaultVersion" : false,
   "adapter" : {
     "bns" : "http://democloudpoint.appspot.com/_ah/spi",
@@ -77,7 +77,8 @@
       },
       "response" : {
         "body" : "empty"
-      }
+      },
+      "clientIds" : [ "734175750239.apps.googleusercontent.com" ]
     },
     "personendpoint.person.list" : {
       "path" : "person/list",
